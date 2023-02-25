@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+   let arr = Array(32).fill("");
+   function isPrime(n){
+    if (n <= 1)
+        return false;
+    for (let i = 2; i < n; i++)
+        if (n % i === 0)
+            return false;
+  
+    return true;
+   }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {arr.map((ele,i)=>{
+        return(
+          <div className='numbox' style={{backgroundColor: (isPrime(i)?"red":i%2===0?'green':'yellow')}}>{i}</div>
+        )
+      })}
     </div>
+    
   );
 }
 
